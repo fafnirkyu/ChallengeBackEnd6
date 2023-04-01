@@ -6,9 +6,9 @@ def nome_valido (nome):
 def cidade_valida (cidade):
         return cidade.isalpha()
 
-def telefone_valido (celular):
+def telefone_valido (telefone):
         modelo = '[0-9]{2} [0-9]{5}-[0-9]{4}'
-        resposta = re.findall(modelo, celular)
+        resposta = re.findall(modelo, telefone)
         return resposta 
 
 def nome_pet_valido (nome_pet):

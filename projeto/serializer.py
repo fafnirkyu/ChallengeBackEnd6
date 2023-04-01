@@ -7,21 +7,21 @@ class TutorSerializer(serializers.ModelSerializer):
         model = Tutor
         fields = '__all__'
 
-    def validate_tutor(self, data):
+    def validate(self, data):
         if not nome_valido(data['nome']):
             raise serializers.ValidationError({'nome':"Não inclua números neste campo"})
         if not cidade_valida(data['cidade']):
             raise serializers.ValidationError({'cidade':"Não inclua números neste campo"})
-        if not telefone_valido(data['celular']):
-            raise serializers.ValidationError({'celular':"O número de celular deve seguir este modelo: 11 91234-1234."})
-        return data 
+        if not telefone_valido(data['telefone']):
+            raise serializers.ValidationError({'telefone':"O número de celular deve seguir este modelo: 11 91234-1234."})
+        return data
 
 class PetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pet
         fields = '__all__'
 
-    def validate_pet(self, data):
+    def validate(self, data):
         if not nome_pet_valido(data['nome_pet']):
             raise serializers.ValidationError({'nome_pet':"Não inclua números neste campo"})
         if not raca_valido(data['raca']):
@@ -36,4 +36,4 @@ class PetSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({'porte':"Não inclua números neste campo"})
         if not cidade_pet_valido(data['cidade_pet']):
             raise serializers.ValidationError({'cidade_pet':"Não inclua números neste campo"})
-        return data 
+        return data     
