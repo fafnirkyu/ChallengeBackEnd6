@@ -5,7 +5,7 @@ Objetivo: Desenvolvimento de uma plataforma que possibilite a conexão entre pes
 | :placard: Vitrine.Dev |     |
 | -------------  | --- |
 | :sparkles: Nome        | Desafio front end Alura 6
-| :label: Tecnologias | python, django-rest, postman
+| :label: Tecnologias | python, django, django-rest, postgresql, react, postman
 | :rocket: URL         | -
 | :fire: Desafio     |  
 
