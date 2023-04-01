@@ -82,11 +82,11 @@ WSGI_APPLICATION = "adopet.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'adopet_db',
+        'NAME': 'adopet_alura',
         'USER': 'borges',
         'PASSWORD': '4996',
         'HOST': 'localhost',
-        'PORT': '5432   ',
+        'PORT': '5432',
     }
 }
 

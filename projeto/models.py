@@ -2,7 +2,7 @@ from django.db import models
 
 class Tutor(models.Model):
     id_tutor = models.AutoField(primary_key=True)
-    email = models.EmailField(max_length=255, default= ' ')
+    email = models.EmailField(max_length=255, unique=True)
     nome = models.CharField(max_length=30)
     telefone = models.CharField(max_length=15)
     cidade = models.CharField(max_length=35)
@@ -28,7 +28,7 @@ class Pet(models.Model):
     id_pet = models.AutoField(primary_key=True)
     nome_pet = models.CharField(max_length=30)
     especie = models.CharField(max_length=1, choices=ESPECIE, blank=False, null=False, default='Cachorro' )
-    raca = models.CharField(max_length=100, default= ' ')
+    raca = models.CharField(max_length=100)
     personalidade = models.CharField(max_length=30)
     porte = models.CharField(max_length=30)
     especie = models.CharField(max_length=15)
