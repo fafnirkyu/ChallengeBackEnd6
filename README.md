@@ -1,10 +1,10 @@
-Desafio front end Alura 6
+Desafio Back end Alura 6
 
 Objetivo: Desenvolvimento de uma plataforma que possibilite a conexão entre pessoas que desejam adotar animais de estimação e abrigos de animais.
 
 | :placard: Vitrine.Dev |     |
 | -------------  | --- |
-| :sparkles: Nome        | Desafio front end Alura 6
+| :sparkles: Nome        | Desafio BackEnd Alura 6
 | :label: Tecnologias | python, django, django-rest, postgresql, react, postman
 | :rocket: URL         | -
 | :fire: Desafio     |  
