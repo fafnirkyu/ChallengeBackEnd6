@@ -18,7 +18,7 @@ Após alguns testes com protótipos feitos pelo time de UX/UI de uma empresa, fo
 
 O desafio foi separado em 4 etapas divididas em 4 semanas:
 
-Semana 1: criação do projeto inicial, criação de uma base de dados para persistência das informações, criada atravéz do postgres e serviço de autenticação para acesso às rotas GET, POST, PUT e DELETE. ;
+Semana 1: criação do projeto inicial, criação de uma base de dados para persistência das informações, criada atravéz do postgres e serviço de autenticação para acesso às rotas GET, POST, PUT e DELETE, implementação da validação nos campos de preenchimento;
 
 Semana 2 :;
 
