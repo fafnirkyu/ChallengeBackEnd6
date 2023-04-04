@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "corsheaders",
     "projeto",
+    "phonenumber_field",
+    'django_filters',
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -124,8 +126,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    "DEFAULT_PERMISSION_CLASSES": [
+         "rest_framework.permissions.IsAuthenticated",
+         "rest_framework.permissions.DjangoModelPermissions",
+    ]
+}
+

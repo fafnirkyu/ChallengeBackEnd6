@@ -31,4 +31,14 @@ def porte_valido (porte):
 
 def cidade_pet_valido (cidade_pet):
     return cidade_pet.isalpha()
-       
+
+def nome_valido_abrigo (nome_abrigo):
+    return nome_abrigo.isalpha()
+
+def cidade_valida_abrigo (cidade_abrigo):
+        return cidade_abrigo.isalpha()
+
+def telefone_valido_abrigo (telefone_abrigo):
+        modelo = '[0-9]{2} [0-9]{5}-[0-9]{4}'
+        resposta = re.findall(modelo, telefone_abrigo)
+        return resposta 
