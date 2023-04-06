@@ -1,6 +1,26 @@
 from rest_framework import serializers
-from projeto.models import Tutor, Pet, Abrigo, Adocao
+from django.contrib.auth.password_validation import validate_password
+from projeto.models import User, Tutor, Pet, Abrigo, Adocao
 from projeto.validators import *
+
+
+class UserSerializer(serializers.ModelSerializer):
+    password2 = serializers.CharField(label="Confirme sua senha", max_length=128, write_only=True)
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password', 'password2', 'is_tutor', 'is_shelter', 'is_active')
+        extra_kwargs = {"password": {"write_only": True}}
+    
+    def validate(self, attrs):
+        password = attrs.get("password")
+        password2 = attrs.get("password2")
+        if password != password2:
+            raise serializers.ValidationError("Password não são iguais.")
+        return attrs
+
+    def validate_password(self, value):
+        validate_password(value)
+        return value
 
 class TutorSerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,7 +35,7 @@ class TutorSerializer(serializers.ModelSerializer):
 class PetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pet
-        fields = '__all__'
+        fields = ('nome_pet', 'cidade_pet', 'idade_pet', 'sobre_pet', 'adotado', 'id_abrigo', 'foto_pet')
     
 class AbrigoSerializer(serializers.ModelSerializer):
     class Meta:

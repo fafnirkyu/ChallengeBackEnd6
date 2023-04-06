@@ -1,15 +1,19 @@
 from django.db import models
 from django.core.validators import RegexValidator
-from django.contrib.auth.base_user import AbstractBaseUser
-from django.contrib.auth.models import PermissionsMixin  
+import datetime
 
+now=datetime.datetime.now()
 letrasregex = RegexValidator(r'^[a-zA-Z_ áàâãéèêíïóôõöúçñ]*$', 'Não inclua números neste campo')
 
-class Usuario(models.Model):
-    nome_user = models.CharField("Nome completo", max_length=255,validators=[letrasregex])
-    email_user = models.EmailField("Email" ,max_length=255, unique=True)
-    senha1_user = models.CharField(max_length=100)
-    senha2_user = models.CharField(max_length=100)
+class User(models.Model):
+    username = models.CharField("Usuário", max_length=255 ,validators=[letrasregex]) 
+    email = models.EmailField("Email" ,max_length=255, unique=True)
+    password = models.CharField("Senha", max_length=35)
+    password2 = models.CharField(max_length=35)
+    is_tutor = models.BooleanField("É Tutor", default=False)
+    is_shelter = models.BooleanField("É Abrigo", default=False)
+    is_active = models.BooleanField("Ativo", default=False)
+
 
 class Tutor(models.Model):
     id_tutor = models.AutoField(primary_key=True)
@@ -42,7 +46,7 @@ class Pet(models.Model):
     sobre_pet = models.CharField(max_length=255,validators=[letrasregex])
     adotado = models.BooleanField(default=False)
     foto_pet = models.ImageField(blank=True, null=True)
-    id_abrigo = models.ForeignKey(Abrigo, on_delete=models.CASCADE, blank=True)
+    id_abrigo = models.ForeignKey(  Abrigo, on_delete=models.CASCADE, blank=True)
     def __str__(self):
         return self.nome_pet    
 
