@@ -1,31 +1,13 @@
 from rest_framework import viewsets, filters, status
 from rest_framework.generics import RetrieveUpdateDestroyAPIView
 from rest_framework.response import Response
-from projeto.models import MyAccountManager,User, Pet, Adocao
-from projeto.serializer  import RegistrationSerializer , TutorSerializer, PetSerializer, AbrigoSerializer, AdocaoSerializer
+from projeto.models import User, Pet, Adocao
+from projeto.serializer  import  TutorSerializer, PetSerializer, AbrigoSerializer, AdocaoSerializer
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.decorators import api_view, renderer_classes
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
 
 
-
-@api_view(['POST'])
-
-def registration_view(request):
-
-	if request.method == 'POST':
-		serializer = RegistrationSerializer(data=request.data)
-		data = {}
-		if serializer.is_valid():
-			account = serializer.save()
-			data['response'] = 'Usuário registrado com sucesso'
-			data['email'] = account.email
-			data['username'] = account.username
-		else:
-			data = serializer.errors
-		return Response(data)
-    
 
 class TutorViewSet(viewsets.ModelViewSet):
     """Exibindo todos os tutores"""
