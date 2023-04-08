@@ -2,9 +2,9 @@ from django.contrib import admin
 from projeto.models import Tutor, Pet, Abrigo, Adocao
 
 class Tutores(admin.ModelAdmin):
-    list_display = ('id_tutor','email' , 'nome', 'telefone', 'cidade', 'sobre')
-    list_display_links = ('id_tutor', 'nome', 'email')
-    search_fields = ('id_tutor','nome', 'email',)
+    list_display = ('id_tutor','email_tutor' , 'nome', 'telefone', 'cidade', 'sobre')
+    list_display_links = ('id_tutor', 'nome', 'email_tutor')
+    search_fields = ('id_tutor','nome', 'email_tutor',)
     list_per_page = 20
 
 admin.site.register(Tutor, Tutores)

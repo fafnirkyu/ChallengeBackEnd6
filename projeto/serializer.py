@@ -1,33 +1,41 @@
 from rest_framework import serializers
-from django.contrib.auth.password_validation import validate_password
-from projeto.models import User, Tutor, Pet, Abrigo, Adocao
+from projeto.models import Account, User, Tutor, Pet, Abrigo, Adocao
 from projeto.validators import *
 
 
-class UserSerializer(serializers.ModelSerializer):
-    password2 = serializers.CharField(label="Confirme sua senha", max_length=128, write_only=True)
-    class Meta:
-        model = User
-        fields = ('username', 'email', 'password', 'password2', 'is_tutor', 'is_shelter', 'is_active')
-        extra_kwargs = {"password": {"write_only": True}}
-    
-    def validate(self, attrs):
-        password = attrs.get("password")
-        password2 = attrs.get("password2")
-        if password != password2:
-            raise serializers.ValidationError("Password não são iguais.")
-        return attrs
+class RegistrationSerializer(serializers.ModelSerializer):
 
-    def validate_password(self, value):
-        validate_password(value)
-        return value
+	password2 = serializers.CharField(style={'input_type': 'password'}, write_only=True)
+
+	class Meta:
+		model = Account
+		fields = ['email', 'username', 'password', 'password2']
+		extra_kwargs = {
+				'password': {'write_only': True},
+		}	
+
+
+	def	save(self):
+
+		conta = Account(
+					email=self.validated_data['email'],
+					username=self.validated_data['username']
+				)
+		password = self.validated_data['password']
+		password2 = self.validated_data['password2']
+		if password != password2:
+			raise serializers.ValidationError({'password': 'Passwords must match.'})
+		conta.set_password(password)
+		conta.save()
+		return conta
+
 
 class TutorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tutor
-        fields = '__all__'
+        fields = ('id_tutor', 'nome', 'email_tutor', 'telefone', 'cidade',  'sobre', 'foto_tutor')
 
-    def validate(self, data):
+    def validate(self, data):   
         if not telefone_valido(data['telefone']):
             raise serializers.ValidationError({'telefone':"O número de celular deve seguir este modelo: 11 91234-1234."})
         return data
