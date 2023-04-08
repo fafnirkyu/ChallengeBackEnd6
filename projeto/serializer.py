@@ -1,11 +1,11 @@
 from rest_framework import serializers
-from projeto.models import Account, User, Tutor, Pet, Abrigo, Adocao
+from projeto.models import Tutor, Pet, Abrigo, Adocao
 from projeto.validators import *
 
 class TutorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tutor
-        fields = ('id_tutor', 'nome', 'email_tutor', 'telefone', 'cidade',  'sobre', 'foto_tutor')
+        fields = '__all__'
 
     def validate(self, data):   
         if not telefone_valido(data['telefone']):
