@@ -9,7 +9,7 @@ Objetivo: Desenvolvimento de uma plataforma que possibilite a conexão entre pes
 | :sparkles: Nome        | Desafio BackEnd Alura 6
 | :label: Tecnologias | python, django, django-rest, postgresql, react, postman
 | :rocket: URL         | -
-| :fire: Desafio     |  https://www.alura.com.br/challenges/back-end
+| :fire: Desafio     |  https://www.alura.com.br/challenges/back-end-6
 
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
 ![](https://i.imgur.com/FnZnU4h.png#vitrinedev)
