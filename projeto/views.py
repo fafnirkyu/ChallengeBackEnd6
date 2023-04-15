@@ -1,13 +1,15 @@
 from rest_framework import viewsets, filters
 from rest_framework.permissions import DjangoModelPermissions
-from projeto.models import Tutor, Pet, Adocao, Abrigo
-from projeto.serializer  import  TutorSerializer, PetSerializer, AbrigoSerializer, AdocaoSerializer
+from projeto.models import User, Tutor, Pet, Adocao, Abrigo
+from projeto.serializer  import  UserSerializer, TutorSerializer, PetSerializer, AbrigoSerializer, AdocaoSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
-from django.contrib.auth.views import LoginView
-from rest_framework.authtoken.views import ObtainAuthToken
-from projeto.custom_auth_backend import CustomAuthBackend
+from rest_framework import generics
+
+class CreateUserView(generics.CreateAPIView):
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
 
 class TutorViewSet(viewsets.ModelViewSet):
     """Exibindo todos os tutores"""

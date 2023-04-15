@@ -1,6 +1,33 @@
 from rest_framework import serializers
-from projeto.models import Tutor, Pet, Abrigo, Adocao
+from projeto.models import User, Tutor, Pet, Abrigo, Adocao
 from projeto.validators import *
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
+class UserSerializer(serializers.ModelSerializer):
+    senha = serializers.CharField(write_only=True, required=True, style={'input_type': 'password'}, label='Password')
+    repita_senha = serializers.CharField(write_only=True, required=True, style={'input_type': 'password'}, label='Confirm Password')
+
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email', 'senha', 'repita_senha']
+
+    def validate(self, data):
+        if data['senha'] != data['repita_senha']:
+            raise serializers.ValidationError("As senhas não coincidem.")
+        del data['repita_senha']
+        return data
+
+    def create(self, validated_data):
+        password = validated_data.pop('senha')
+        user = User.objects.create(**validated_data)
+        user.set_password(password)
+        user.save()
+        return user
+
+
+
 
 class TutorSerializer(serializers.ModelSerializer):
     class Meta:
