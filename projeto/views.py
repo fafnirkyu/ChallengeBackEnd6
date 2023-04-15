@@ -5,8 +5,9 @@ from projeto.serializer  import  TutorSerializer, PetSerializer, AbrigoSerialize
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
-
-
+from django.contrib.auth.views import LoginView
+from rest_framework.authtoken.views import ObtainAuthToken
+from projeto.custom_auth_backend import CustomAuthBackend
 
 class TutorViewSet(viewsets.ModelViewSet):
     """Exibindo todos os tutores"""

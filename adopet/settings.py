@@ -43,9 +43,10 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "corsheaders",
-    "projeto",
+    "projeto.apps.ProjetoConfig",
     "phonenumber_field",
     'django_filters',
+    'drf_yasg',
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -88,7 +89,7 @@ WSGI_APPLICATION = "adopet.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'adopet_alura',
+        'NAME': 'Adopet',
         'USER': 'borges',
         'PASSWORD': '4996',
         'HOST': 'localhost',
@@ -139,5 +140,6 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES':[
     'rest_framework.authentication.BasicAuthentication'
     ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
 }
-

@@ -26,7 +26,6 @@ class Abrigo(models.Model):
     sobre_abrigo = models.CharField(max_length=255)
     foto_abrigo = models.ImageField(blank=True, null=True)
 
-
 class Pet(models.Model):
     id_pet = models.AutoField(primary_key=True)
     nome_pet = models.CharField(max_length=30,validators=[letrasregex])
@@ -35,7 +34,6 @@ class Pet(models.Model):
     sobre_pet = models.CharField(max_length=255,validators=[letrasregex])
     adotado = models.BooleanField(default=False)
     foto_pet = models.ImageField(blank=True, null=True)
-    id_abrigo = models.ForeignKey(  Abrigo, on_delete=models.CASCADE, blank=True)
     def __str__(self):
         return self.nome_pet    
 

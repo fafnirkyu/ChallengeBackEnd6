@@ -11,12 +11,7 @@ class TutorSerializer(serializers.ModelSerializer):
         if not telefone_valido(data['telefone']):
             raise serializers.ValidationError({'telefone':"O número de celular deve seguir este modelo: 11 91234-1234."})
         return data
-
-class PetSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Pet
-        fields = ('nome_pet', 'cidade_pet', 'idade_pet', 'sobre_pet', 'adotado', 'id_abrigo', 'foto_pet')
-    
+  
 class AbrigoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Abrigo
@@ -26,6 +21,11 @@ class AbrigoSerializer(serializers.ModelSerializer):
         if not telefone_valido(data['telefone_abrigo']):
             raise serializers.ValidationError({'telefone':"O número de celular deve seguir este modelo: 11 91234-1234."})
         return data
+
+class PetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Pet
+        fields = ('nome_pet', 'cidade_pet', 'idade_pet', 'sobre_pet', 'adotado', 'foto_pet')
 
 class AdocaoSerializer(serializers.ModelSerializer):
     class Meta:

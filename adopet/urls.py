@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from projeto.views import  TutorViewSet, PetViewSet, AbrigoViewSet, AdocaoViewSet
 from rest_framework import routers
+from django.urls import re_path as path
 
 app_name = 'account'
 router = routers.DefaultRouter()
