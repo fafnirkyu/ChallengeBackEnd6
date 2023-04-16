@@ -1,6 +1,6 @@
 Desafio Back end Alura 6
 
-Codigo : https://github.com/fafnirkyu/ChallengeBackEnd6/tree/master
+Código : https://github.com/fafnirkyu/ChallengeBackEnd6/tree/master
 
 Objetivo: Desenvolvimento de uma plataforma que possibilite a conexão entre pessoas que desejam adotar animais de estimação e abrigos de animais.
 
@@ -26,5 +26,5 @@ Semana 2 : criação dos modelos de abrigo, pet e adoção;
 
 Semana 3 : Execução de testes;
 
-Semana 4 : Refatoração do código;
+Semana 4 : Refatoração do código.
 
