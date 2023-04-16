@@ -24,7 +24,7 @@ Semana 1: criação do projeto inicial, criação de uma base de dados para pers
 
 Semana 2 : criação dos modelos de abrigo, pet e adoção;
 
-Semana 3 :;
+Semana 3 : Execução de testes;
 
-Semana 4 :;
+Semana 4 : Refatoração do código;
 
